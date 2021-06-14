@@ -250,6 +250,7 @@ if flowinput=='Discharge' or 'RI':
         idx=int(t/dt)
         print (idx)
         H=calculate_flow_depth(Q_cms[idx,:], nst)
+        H=calculate_flow_depth(Q[idx,:], nst)
         nst._grid.at_link.dataset.flow_depth.data=H
         nst.run_one_step(dt)  
         print("Model time: ", t/(60*60), "hrs passed")
