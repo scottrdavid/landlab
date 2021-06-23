@@ -116,6 +116,7 @@ if flowinput=='Discharge':
             Q_cms=Q_data.copy()
         else:
             print('Units not specified!! Assuming m3/s')
+        Q=Q_cms.copy()
     
     if TFQstr==False: # if input data a constant discharge--steady state simulation
        if Qunits=='cfs':
@@ -249,7 +250,6 @@ if flowinput=='Discharge' or 'RI':
         print(t)
         idx=int(t/dt)
         print (idx)
-        H=calculate_flow_depth(Q_cms[idx,:], nst)
         H=calculate_flow_depth(Q[idx,:], nst)
         nst._grid.at_link.dataset.flow_depth.data=H
         nst.run_one_step(dt)  
